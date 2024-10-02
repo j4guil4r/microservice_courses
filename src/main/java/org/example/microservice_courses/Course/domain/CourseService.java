@@ -30,4 +30,12 @@ public class CourseService {
         if (!courseRepository.existsById(id)) throw new ResourceNotFoundException("Course not found");
         courseRepository.deleteById(id);
     }
+
+    public Course updateCourse(Long id, Course course) {
+        Optional<Course> courseOptional = courseRepository.findById(id);
+        if (!courseOptional.isPresent()) throw new ResourceNotFoundException("Course not found");
+        course.setId_course(id);
+        courseRepository.save(course);
+        return course;
+    }
 }

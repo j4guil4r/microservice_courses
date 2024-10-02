@@ -38,4 +38,10 @@ public class CourseController {
         courseService.deleteCourse(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course course) {
+        Course updatedCourse = courseService.updateCourse(id, course);
+        return ResponseEntity.ok(updatedCourse);
+    }
 }

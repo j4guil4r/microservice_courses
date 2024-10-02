@@ -42,4 +42,10 @@ public class ProfessorController {
         Professor updatedProfessor = professorService.updateProfessor(id, professor);
         return ResponseEntity.ok(updatedProfessor);
     }
+
+    @PostMapping
+    public ResponseEntity<Professor> createProfessor(@RequestBody Professor professor) {
+        Professor createdProfessor = professorService.createProfessor(professor);
+        return ResponseEntity.ok(createdProfessor);
+    }
 }

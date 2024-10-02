@@ -27,7 +27,7 @@ public class ProfessorService {
     }
 
     public void deleteProfessor(Long id){
-        Professor professor = professorRepository.findById(id)
+        professorRepository.findById(id)
                 .orElseThrow(()->new ResourceNotFoundException("Professor not found with id" + id));
         professorRepository.deleteById(id);
 
@@ -41,7 +41,8 @@ public class ProfessorService {
         return professorRepository.save(professor);
     }
 
-
-
+    public Professor createProfessor(Professor professor){
+        return professorRepository.save(professor);
+    }
 
 }
