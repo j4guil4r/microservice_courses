@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/courses")
 public class CourseController {
@@ -25,6 +24,12 @@ public class CourseController {
     public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
         Course course = courseService.getCourseById(id);
         return ResponseEntity.ok(course);
+    }
+
+    @GetMapping("/professor/{professorId}")
+    public ResponseEntity<List<Course>> getCoursesByProfessor(@PathVariable Long professorId) {
+        List<Course> courses = courseService.getCoursesByProfessor(professorId);
+        return ResponseEntity.ok(courses);
     }
 
     @PostMapping

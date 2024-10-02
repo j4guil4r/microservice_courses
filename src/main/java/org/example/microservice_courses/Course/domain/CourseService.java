@@ -26,6 +26,10 @@ public class CourseService {
                 .orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id));
     }
 
+    public List<Course> getCoursesByProfessor(Long professorId) {
+        return courseRepository.findByProfessors_Id(professorId);
+    }
+
     public void deleteCourse(Long id) {
         if (!courseRepository.existsById(id)) throw new ResourceNotFoundException("Course not found");
         courseRepository.deleteById(id);
@@ -33,7 +37,7 @@ public class CourseService {
 
     public Course updateCourse(Long id, Course course) {
         Optional<Course> courseOptional = courseRepository.findById(id);
-        if (!courseOptional.isPresent()) throw new ResourceNotFoundException("Course not found");
+        if (courseOptional.isEmpty()) throw new ResourceNotFoundException("Course not found");
         course.setId_course(id);
         courseRepository.save(course);
         return course;

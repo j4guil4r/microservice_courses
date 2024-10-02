@@ -3,6 +3,9 @@ package org.example.microservice_courses.Course.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.microservice_courses.Professor.domain.Professor;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,4 +23,12 @@ public class Course {
 
     @Column(nullable = false)
     private int id_career;
+
+    @ManyToMany
+    @JoinTable(
+            name = "course_professor",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "professor_id")
+    )
+    private List<Professor> professors;
 }
