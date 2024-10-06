@@ -8,17 +8,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/sistema_universidad
+      SPRING_DATASOURCE_URL: jdbc:postgresql://3.234.197.222:8006/MS_Cursos  # Cambia aquí la conexión a tu MV Base de Datos
       SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: mypassword
-    depends_on:
-      - db
-
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: sistema_universidad
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: mypassword
-    ports:
-      - "5432:5432"
+      SPRING_DATASOURCE_PASSWORD: utec
+    depends_on: []
